@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+
+mixin church(church)
+	.col-lg-12
+		.grid-item
+			//- li
+			//- 	img(src= boxer._.image.fit(150,150))
+			.post(data-ks-editable=editable(user, { list: 'Church', id: church.id }))
+				h3: a(href='/church/item/' + church.slug)= church.title
+
+block intro
+	.container
+		h1= data.category ? data.category.name : 'Churches'
+
+block content
+	.container: .col-lg-12#container
+
+		h1 List of Churches
+		#sorts.button-group
+			button.button.is-checked(data-sort-value='original-order') All
+			button.button(data-sort-value='a-e') A-E
+			button.button(data-sort-value='f-j') F-J
+			button.button(data-sort-value='k-o') K-O
+			button.button(data-sort-value='p-r') P-R
+			button.button(data-sort-value='s-z') S-Z
+		ul.table-like
+		.grid
+			each church in data.churches
+				+church(church)
+
+			

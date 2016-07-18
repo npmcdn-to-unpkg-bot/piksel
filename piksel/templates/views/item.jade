@@ -1,0 +1,45 @@
+extends ../layouts/default
+
+include ../mixins/flash-messages
+
+block content
+	.container: .col-lg-12.church.row
+		h1= data.church.title
+		.url.col-lg-12.row
+			h3 URLs
+			if data.church.siteUrl.streamingfaith
+				a(href= '#{data.church.siteUrl.streamingfaith}', target='_blank') Streaming Faith Site for #{data.church.title}
+					br
+			if data.church.siteUrl.piksel
+				a(href='#{data.church.siteUrl.piksel}', target='_blank') Streaming Faith Piksel Site for #{data.church.title}
+					br
+			if data.church.siteUrl.private
+				a(href='#{data.church.siteUrl.private}', target='_blank') Private URL for #{data.church.title}	
+					br
+		.contact.col-lg-12.row
+			h3 Contact Info
+			if data.church.contact.email1
+				h4= data.church.contact.email1
+			if data.church.contact.email2
+				h4= data.church.contact.email2
+			if data.church.contact.email3
+				h4= data.church.contact.email3
+			if data.church.contact.email3
+				h4= data.church.contact.email3
+			if data.church.contact.phone1
+				h4= data.church.contact.phone1
+		.col-lg-12.akamai.row
+			h3 Akamai Test Player Links
+			a(href='mediapm.edgesuite.net/edgeflash/public/debug/HDPlayer.html', target='_blank') Akamai Test Player
+			h3 HDS Streams
+			if data.church.akamai
+				h4= data.church.akamai.hds.hundred
+				h4= data.church.akamai.hls
+		.notes.col-lg-7.row
+			h3 Special Notes
+		.notes2.col-lg-7.row 
+			if data.church.notes
+				h4!= data.church.notes
+	
+
+
